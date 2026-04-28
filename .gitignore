@@ -60,6 +60,7 @@ coverage/
 credentials.json
 
 # Project-specific docs not shared in repo
+CLAUDE.md
 RESUMEN_SESION.md
 planes/
 
