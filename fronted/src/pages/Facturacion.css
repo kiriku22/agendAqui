@@ -1,0 +1,500 @@
+.facturacion-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem;
+}
+
+/* Header */
+.facturacion__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.facturacion__title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.facturacion__subtitle {
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+.facturacion__header-stats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.facturacion__stat {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+  background: var(--hotel-card-background);
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--hotel-border);
+}
+
+.facturacion__stat--total {
+  font-weight: 700;
+  color: var(--hotel-primary, #3b82f6);
+  font-size: 1rem;
+}
+
+/* Filters */
+.facturacion__filters {
+  background: var(--hotel-card-background);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.facturacion__filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+}
+
+.facturacion__filter-group--search {
+  flex: 1;
+  min-width: 200px;
+}
+
+.facturacion__filter-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.facturacion__input {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--hotel-text);
+  background-color: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border-dark, var(--hotel-border));
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.facturacion__input:hover {
+  border-color: var(--hotel-text-light, var(--hotel-text-secondary));
+}
+
+.facturacion__input:focus {
+  outline: none;
+  border-color: var(--hotel-primary, #3b82f6);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.facturacion__filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.facturacion__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.facturacion__btn--primary {
+  background: var(--hotel-primary, #3b82f6);
+  color: #fff;
+}
+
+.facturacion__btn--primary:hover {
+  opacity: 0.9;
+}
+
+.facturacion__btn--secondary {
+  background: transparent;
+  color: var(--hotel-text-secondary);
+  border: 1px solid var(--hotel-border);
+}
+
+.facturacion__btn--secondary:hover {
+  background: var(--hotel-hover-bg, rgba(0, 0, 0, 0.05));
+}
+
+/* Table */
+.facturacion__table-container {
+  background: var(--hotel-card-background);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.facturacion__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.facturacion__table thead {
+  background: var(--hotel-background, #f8fafc);
+  border-bottom: 2px solid var(--hotel-border);
+}
+
+.facturacion__table th {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.facturacion__th--right {
+  text-align: right !important;
+}
+
+.facturacion__table td {
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--hotel-border);
+  color: var(--hotel-text);
+}
+
+.facturacion__row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.facturacion__row:hover {
+  background: var(--hotel-hover-bg, rgba(59, 130, 246, 0.04));
+}
+
+.facturacion__cell--numero {
+  font-weight: 600;
+  color: var(--hotel-primary, #3b82f6);
+}
+
+.facturacion__cell--money {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.facturacion__cell--total {
+  font-weight: 700;
+}
+
+/* Badges */
+.facturacion__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.facturacion__badge--pos {
+  background: rgba(34, 197, 94, 0.12);
+  color: #16a34a;
+}
+
+.facturacion__badge--checkout {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+
+/* Action Button */
+.facturacion__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  background: transparent;
+  color: var(--hotel-text-secondary);
+  transition: all 0.2s;
+}
+
+.facturacion__action-btn:hover {
+  background: var(--hotel-primary, #3b82f6);
+  color: #fff;
+}
+
+/* Empty & Error */
+.facturacion__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  color: var(--hotel-text-secondary);
+  background: var(--hotel-card-background);
+  border-radius: 0.5rem;
+}
+
+.facturacion__empty h3 {
+  margin: 0.75rem 0 0.25rem;
+  color: var(--hotel-text);
+}
+
+.facturacion__empty p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.facturacion__error {
+  padding: 1.5rem;
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Modal */
+.facturacion__modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.facturacion__modal {
+  background: var(--hotel-card-background);
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 640px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.facturacion__modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.facturacion__modal-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.facturacion__modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  background: transparent;
+  color: var(--hotel-text-secondary);
+  transition: all 0.15s;
+}
+
+.facturacion__modal-close:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.facturacion__modal-body {
+  padding: 1.25rem;
+}
+
+/* Detail Grid */
+.facturacion__detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.facturacion__detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.facturacion__detail-item--full {
+  grid-column: 1 / -1;
+}
+
+.facturacion__detail-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--hotel-text-secondary);
+}
+
+.facturacion__detail-value {
+  font-size: 0.9rem;
+  color: var(--hotel-text);
+  font-weight: 500;
+}
+
+/* Detail Sections */
+.facturacion__detail-section {
+  margin-top: 1rem;
+}
+
+.facturacion__detail-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+/* Detail Table */
+.facturacion__detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.facturacion__detail-table th {
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.facturacion__detail-table td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--hotel-border);
+  color: var(--hotel-text);
+}
+
+/* Totals */
+.facturacion__detail-totals {
+  background: var(--hotel-background, #f8fafc);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-top: 1rem;
+}
+
+.facturacion__total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+  color: var(--hotel-text-secondary);
+}
+
+.facturacion__total-row--grand {
+  margin-top: 0.35rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--hotel-border);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+/* Metodos Pago */
+.facturacion__metodos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.facturacion__metodo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  background: var(--hotel-background, #f8fafc);
+  border-radius: 0.375rem;
+  font-size: 0.85rem;
+  color: var(--hotel-text);
+}
+
+.facturacion__metodo-monto {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .facturacion__header {
+    flex-direction: column;
+  }
+
+  .facturacion__filters {
+    flex-direction: column;
+  }
+
+  .facturacion__filter-group {
+    min-width: 100%;
+  }
+
+  .facturacion__detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facturacion__table {
+    font-size: 0.8rem;
+  }
+
+  .facturacion__table th,
+  .facturacion__table td {
+    padding: 0.5rem;
+  }
+}

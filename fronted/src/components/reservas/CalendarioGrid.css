@@ -1,0 +1,471 @@
+.calendario-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  background: var(--hotel-card-background);
+  border-radius: 6px;
+  padding: 0.625rem;
+}
+
+/* Toolbar */
+.calendario-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: var(--hotel-surface-light);
+  border-radius: 4px;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.calendario-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-btn {
+  padding: 0.375rem 0.75rem;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border-dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+  color: var(--hotel-text);
+}
+
+.nav-btn:hover {
+  background: var(--hotel-surface-light);
+  border-color: var(--hotel-primary);
+}
+
+.calendario-zoom {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+}
+
+.calendario-zoom select {
+  padding: 0.375rem;
+  border: 1px solid var(--hotel-border-dark);
+  border-radius: 4px;
+  background: var(--hotel-card-background);
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--hotel-text);
+}
+
+.calendario-seleccion-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  background: var(--hotel-surface-light);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--hotel-primary, #1e40af);
+  font-weight: 500;
+}
+
+.btn-limpiar {
+  padding: 0.25rem 0.5rem;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-primary, #1e40af);
+  border-radius: 4px;
+  color: var(--hotel-primary, #1e40af);
+  cursor: pointer;
+  font-size: 0.6875rem;
+  transition: all 0.2s;
+}
+
+.btn-limpiar:hover {
+  background: var(--hotel-primary, #1e40af);
+  color: var(--hotel-card-background);
+}
+
+/* Grid */
+.calendario-grid {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 75vh;
+  border: 1px solid var(--hotel-border);
+  border-radius: 4px;
+  background: var(--hotel-card-background);
+}
+
+.grid-header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: var(--hotel-card-background);
+  z-index: 10;
+  border-bottom: 2px solid var(--hotel-border);
+}
+
+.header-habitacion {
+  min-width: 100px;
+  padding: 0.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--hotel-text);
+  background: var(--hotel-surface-light);
+  border-right: 1px solid var(--hotel-border);
+  position: sticky;
+  left: 0;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-fecha {
+  min-width: 70px;
+  padding: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--hotel-border);
+  background: var(--hotel-surface-light);
+}
+
+.header-fecha.hoy {
+  background: var(--hotel-surface-light);
+  border-bottom: 2px solid var(--hotel-primary, #1e40af);
+}
+
+.fecha-dia {
+  font-size: 0.625rem;
+  color: var(--hotel-text-secondary);
+  text-transform: uppercase;
+}
+
+.fecha-numero {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+.fecha-mes {
+  font-size: 0.625rem;
+  color: var(--hotel-text-secondary);
+}
+
+/* Filas */
+.grid-row {
+  display: flex;
+}
+
+.grid-row:hover {
+  background: var(--hotel-surface-light);
+}
+
+.celda-habitacion {
+  min-width: 100px;
+  padding: 0.5rem;
+  background: var(--hotel-surface-light);
+  border-right: 1px solid var(--hotel-border);
+  border-bottom: 1px solid var(--hotel-border);
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.hab-numero {
+  font-weight: 700;
+  color: var(--hotel-text);
+  font-size: 0.75rem;
+}
+
+.hab-tipo {
+  font-size: 0.625rem;
+  color: var(--hotel-text-secondary);
+  text-transform: capitalize;
+}
+
+.hab-piso {
+  font-size: 0.625rem;
+  color: var(--hotel-text-light);
+}
+
+/* Celdas de fecha */
+.celda-fecha {
+  min-width: 70px;
+  min-height: 50px;
+  padding: 0.25rem;
+  border-right: 1px solid var(--hotel-border);
+  border-bottom: 1px solid var(--hotel-border);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.celda-fecha:hover.estado-disponible {
+  background: var(--hotel-surface-light);
+  border-color: var(--hotel-primary);
+}
+
+/* Estados */
+.celda-fecha.estado-disponible {
+  background: var(--hotel-card-background);
+}
+
+.celda-fecha.estado-pendiente {
+  background: #fef3c7;
+  border-color: #fbbf24;
+  cursor: not-allowed;
+}
+
+.celda-fecha.estado-confirmada {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  cursor: not-allowed;
+}
+
+.celda-fecha.estado-cancelada {
+  background: #fee2e2;
+  border-color: #ef4444;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.celda-fecha.estado-ocupada {
+  background: #fed7aa;
+  border-color: #f97316;
+  cursor: not-allowed;
+}
+
+.celda-fecha.estado-en_curso {
+  background: #d1fae5;
+  border-color: #10b981;
+  cursor: pointer;
+}
+
+.celda-fecha.estado-finalizada {
+  background: #d1d5db;
+  border-color: #6b7280;
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* Seleccionada */
+.celda-fecha.seleccionada {
+  background: var(--hotel-primary, #1e40af) !important;
+  border-color: #6d28d9 !important;
+  color: var(--hotel-card-background);
+}
+
+.celda-fecha.seleccionada .celda-reserva-info {
+  color: var(--hotel-card-background);
+}
+
+/* Celda clickable (con reserva) */
+.celda-fecha.clickable {
+  cursor: pointer;
+}
+
+.celda-fecha.clickable:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Info de reserva en celda */
+.celda-reserva-info {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Leyenda */
+.calendario-leyenda {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  background: var(--hotel-surface-light);
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--hotel-text);
+}
+
+.leyenda-color {
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid var(--hotel-border-dark);
+}
+
+.leyenda-color.estado-disponible {
+  background: var(--hotel-card-background);
+}
+
+.leyenda-color.estado-pendiente {
+  background: #fef3c7;
+  border-color: #fbbf24;
+}
+
+.leyenda-color.estado-confirmada {
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.leyenda-color.estado-ocupada {
+  background: #fed7aa;
+  border-color: #f97316;
+}
+
+.leyenda-color.estado-en_curso {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.leyenda-color.estado-finalizada {
+  background: #d1d5db;
+  border-color: #6b7280;
+}
+
+.leyenda-color.seleccionada {
+  background: var(--hotel-primary, #1e40af);
+  border-color: #6d28d9;
+}
+
+/* Ayuda */
+.calendario-ayuda {
+  padding: 0.5rem;
+  background: var(--hotel-surface-light);
+  border-left: 2px solid var(--hotel-primary, #3b82f6);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--hotel-text);
+}
+
+.calendario-ayuda strong {
+  color: var(--hotel-primary, #1e3a8a);
+}
+
+/* Loading */
+.calendario-loading {
+  padding: 3rem;
+  text-align: center;
+  color: var(--hotel-text-secondary);
+  font-size: 1rem;
+}
+
+/* ============================================
+   WALK-IN STYLES
+   ============================================ */
+
+/* Celda Walk-In */
+.celda-fecha.walk-in {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%) !important;
+  border-left: 3px solid #ef4444 !important;
+}
+
+.celda-fecha.walk-in:hover {
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2), 0 2px 4px -1px rgba(239, 68, 68, 0.1);
+}
+
+/* Info de evento en celda */
+.celda-evento-info {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.celda-evento-info.walk-in {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+/* Icono Walk-In */
+.walk-in-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  background: #ef4444;
+  color: white;
+  border-radius: 3px;
+  font-size: 0.5rem;
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+/* Leyenda Walk-In */
+.leyenda-item.walk-in-legend {
+  font-style: italic;
+}
+
+.leyenda-color.walk-in-color {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: #ef4444;
+  border-left: 3px solid #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calendario-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .calendario-nav {
+    justify-content: center;
+  }
+
+  .calendario-zoom {
+    justify-content: center;
+  }
+
+  .header-fecha,
+  .celda-fecha {
+    min-width: 60px;
+  }
+
+  .celda-habitacion {
+    min-width: 100px;
+  }
+
+  .calendario-leyenda {
+    gap: 0.75rem;
+  }
+
+  .walk-in-icon {
+    width: 12px;
+    height: 12px;
+    font-size: 0.45rem;
+  }
+}

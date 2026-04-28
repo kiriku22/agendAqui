@@ -1,0 +1,80 @@
+.input-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-modal__message {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f3f4f6;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.input-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-modal__textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.9375rem;
+  color: #1f2937;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.input-modal__textarea:hover {
+  border-color: #9ca3af;
+}
+
+.input-modal__textarea:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.input-modal__textarea--error {
+  border-color: #ef4444;
+}
+
+.input-modal__textarea--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.input-modal__textarea:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input-modal__error {
+  font-size: 0.875rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+}
+
+.input-modal__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .input-modal__actions {
+    flex-direction: column-reverse;
+  }
+}

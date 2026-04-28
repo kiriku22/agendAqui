@@ -1,0 +1,242 @@
+/* Contenedor principal del detalle de reserva */
+.reserva-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Header con código y estado */
+.reserva-detalle__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  border-radius: 12px;
+  color: white;
+  gap: 1rem;
+}
+
+.reserva-detalle__codigo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.codigo-label {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.codigo-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.reserva-detalle__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem 0.625rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  background: var(--hotel-card-background);
+  white-space: nowrap;
+}
+
+/* Secciones */
+.reserva-detalle__section {
+  background: var(--hotel-surface-light);
+  border: 1px solid var(--hotel-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hotel-text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--hotel-border);
+}
+
+.section-content {
+  background: var(--hotel-card-background);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+/* Grid de información */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.info-grid--financial {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: var(--hotel-surface-light);
+  border-radius: 6px;
+  border: 1px solid var(--hotel-border);
+}
+
+.info-item--full {
+  grid-column: 1 / -1;
+}
+
+.info-item--highlight {
+  background: #fef3c7;
+  border-color: #fbbf24;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--hotel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.info-value--highlight {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+
+.info-value--large {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.info-value--notes {
+  background: var(--hotel-card-background);
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--hotel-border);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.info-icon {
+  color: #1e40af;
+  flex-shrink: 0;
+}
+
+/* Botones de acción */
+.reserva-detalle__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--hotel-border);
+  margin-top: 0.375rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .reserva-detalle__header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+
+  .codigo-value {
+    font-size: 1.5rem;
+  }
+
+  .reserva-detalle__badge {
+    align-self: flex-start;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .info-grid,
+  .info-grid--financial {
+    grid-template-columns: 1fr;
+  }
+
+  .reserva-detalle__section {
+    padding: 1rem;
+  }
+
+  .section-content {
+    padding: 0.75rem;
+  }
+
+  .info-item {
+    padding: 0.625rem;
+  }
+
+  .reserva-detalle__actions {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+  }
+
+  .reserva-detalle__actions button {
+    width: 100%;
+  }
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reserva-detalle__section {
+  animation: slideIn 0.3s ease-out;
+  animation-fill-mode: both;
+}
+
+.reserva-detalle__section:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.reserva-detalle__section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.reserva-detalle__section:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.reserva-detalle__section:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.reserva-detalle__section:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.reserva-detalle__section:nth-child(6) {
+  animation-delay: 0.3s;
+}

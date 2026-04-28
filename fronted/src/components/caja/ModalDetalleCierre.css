@@ -1,0 +1,522 @@
+/* =====================================================
+   MODAL DETALLE CIERRE DE CAJA
+   ===================================================== */
+
+.modal-detalle-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  padding: 1rem;
+}
+
+.modal-detalle-content {
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  width: 95%;
+  max-width: 700px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.modal-detalle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: white;
+}
+
+.header-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  font-size: 1.75rem;
+  opacity: 0.9;
+}
+
+.modal-detalle-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.codigo-turno {
+  font-size: 0.875rem;
+  opacity: 0.85;
+  font-family: 'Courier New', monospace;
+}
+
+.btn-close-modal {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Body */
+.modal-detalle-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.detalle-loading,
+.detalle-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 1rem;
+  color: var(--hotel-text-secondary);
+}
+
+.detalle-error {
+  color: #ef4444;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--hotel-border);
+  border-top-color: #8b5cf6;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Info General */
+.seccion-info-general {
+  margin-bottom: 1.5rem;
+}
+
+.info-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  background: var(--hotel-surface-light);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  color: var(--hotel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-value {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+/* Secciones */
+.seccion-resumen,
+.seccion-ventas-metodo,
+.seccion-arqueo,
+.seccion-movimientos,
+.seccion-notas {
+  margin-bottom: 1.5rem;
+}
+
+.seccion-resumen h3,
+.seccion-ventas-metodo h3,
+.seccion-arqueo h3,
+.seccion-movimientos h3,
+.seccion-notas h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hotel-text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--hotel-border);
+}
+
+.seccion-resumen h3 svg,
+.seccion-ventas-metodo h3 svg,
+.seccion-arqueo h3 svg,
+.seccion-movimientos h3 svg,
+.seccion-notas h3 svg {
+  color: #8b5cf6;
+}
+
+/* Resumen Grid */
+.resumen-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.resumen-card {
+  background: var(--hotel-surface-light);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.resumen-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--hotel-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.resumen-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+.resumen-ventas .resumen-value {
+  color: #8b5cf6;
+}
+
+.resumen-ingresos .resumen-value {
+  color: #10b981;
+}
+
+.resumen-egresos .resumen-value {
+  color: #ef4444;
+}
+
+/* Montos de Cierre */
+.montos-cierre {
+  background: var(--hotel-surface-light);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.monto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.monto-esperado,
+.monto-real {
+  font-weight: 600;
+}
+
+.monto-item.diferencia {
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--hotel-border);
+  font-weight: 700;
+}
+
+.monto-diferencia {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.monto-diferencia small {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.diferencia-cero .monto-diferencia {
+  color: #10b981;
+}
+
+.diferencia-positiva .monto-diferencia {
+  color: #3b82f6;
+}
+
+.diferencia-negativa .monto-diferencia {
+  color: #ef4444;
+}
+
+/* Ventas por Metodo */
+.ventas-metodo-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ventas-metodo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--hotel-surface-light);
+  border-radius: 8px;
+}
+
+.metodo-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metodo-nombre {
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.metodo-transacciones {
+  font-size: 0.75rem;
+  color: var(--hotel-text-secondary);
+}
+
+.metodo-monto {
+  font-weight: 700;
+  color: #10b981;
+  font-size: 1rem;
+}
+
+/* Arqueo Tabla */
+.arqueo-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.arqueo-tabla th {
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  border-bottom: 2px solid var(--hotel-border);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.arqueo-tabla td {
+  padding: 0.625rem 0.75rem;
+  color: var(--hotel-text);
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.arqueo-tabla tfoot td {
+  padding: 0.75rem;
+  background: var(--hotel-surface-light);
+  border-top: 2px solid #8b5cf6;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Movimientos */
+.movimientos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movimiento-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--hotel-surface-light);
+  border-radius: 8px;
+  border-left: 3px solid;
+}
+
+.movimiento-ingreso {
+  border-left-color: #10b981;
+}
+
+.movimiento-egreso {
+  border-left-color: #ef4444;
+}
+
+.movimiento-icono {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+}
+
+.movimiento-ingreso .movimiento-icono {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.movimiento-egreso .movimiento-icono {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.movimiento-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.movimiento-concepto {
+  font-weight: 500;
+  color: var(--hotel-text);
+  text-transform: capitalize;
+}
+
+.movimiento-descripcion {
+  font-size: 0.75rem;
+  color: var(--hotel-text-secondary);
+}
+
+.movimiento-monto {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.movimiento-monto.ingreso {
+  color: #10b981;
+}
+
+.movimiento-monto.egreso {
+  color: #ef4444;
+}
+
+/* Notas */
+.notas-contenido {
+  background: var(--hotel-surface-light);
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--hotel-text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Estado Final */
+.seccion-estado {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--hotel-border);
+}
+
+.estado-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.estado-badge.cuadrado {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid #10b981;
+}
+
+.estado-badge.sobrante {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+}
+
+.estado-badge.faltante {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid #ef4444;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .modal-detalle-content {
+    width: 100%;
+    max-height: 95vh;
+    border-radius: 8px;
+  }
+
+  .modal-detalle-header {
+    padding: 1rem;
+  }
+
+  .modal-detalle-body {
+    padding: 1rem;
+  }
+
+  .info-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resumen-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resumen-value {
+    font-size: 1rem;
+  }
+
+  .movimiento-item {
+    flex-wrap: wrap;
+  }
+
+  .movimiento-monto {
+    width: 100%;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .info-card {
+    grid-template-columns: 1fr;
+  }
+
+  .resumen-grid {
+    grid-template-columns: 1fr;
+  }
+}

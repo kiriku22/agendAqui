@@ -1,0 +1,322 @@
+.ClientesPage {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.ClientesPage__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ClientesPage__header-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ClientesPage__header-title svg {
+  color: var(--hotel-primary);
+}
+
+.ClientesPage__header-title h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--hotel-text);
+}
+
+.ClientesPage__header-title p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+}
+
+/* Filtros */
+.ClientesPage__filters {
+  background: var(--hotel-card-background);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ClientesPage__filters-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr auto 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-group label svg {
+  color: var(--hotel-primary);
+}
+
+.filter-group input[type="text"],
+.filter-group select {
+  padding: 0.625rem;
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+}
+
+.filter-group input[type="text"]:focus,
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--hotel-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.filter-group--checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.filter-group--checkbox label {
+  flex-direction: row;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-group--checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--hotel-primary);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-self: end;
+}
+
+.filter-actions .button {
+  border: 1px solid transparent;
+}
+
+/* Resultados */
+.ClientesPage__results {
+  background: var(--hotel-card-background);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.ClientesPage__results-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--hotel-border);
+  background: var(--hotel-background);
+}
+
+.ClientesPage__results-header p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+  font-weight: 500;
+}
+
+/* Tabla */
+.ClientesPage__table-container {
+  overflow-x: auto;
+}
+
+.ClientesPage__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.ClientesPage__table thead {
+  background: var(--hotel-background);
+  border-bottom: 2px solid var(--hotel-border);
+}
+
+.ClientesPage__table th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--hotel-text);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ClientesPage__table tbody tr {
+  border-bottom: 1px solid var(--hotel-border);
+  transition: background-color 0.2s;
+}
+
+.ClientesPage__table tbody tr:hover {
+  background-color: var(--hotel-surface-light);
+}
+
+.ClientesPage__table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.ClientesPage__table td {
+  padding: 1rem;
+  color: var(--hotel-text);
+}
+
+.ClientesPage__table-row--inactive {
+  opacity: 0.6;
+  background-color: #fee2e2 !important;
+}
+
+[data-theme="dark"] .ClientesPage__table-row--inactive {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.ClientesPage__table-cell--nombre {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.ClientesPage__table-cell--nombre svg {
+  color: var(--hotel-primary);
+  flex-shrink: 0;
+}
+
+.ClientesPage__table-cell--email,
+.ClientesPage__table-cell--phone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--hotel-text-secondary);
+}
+
+.ClientesPage__table-cell--email svg,
+.ClientesPage__table-cell--phone svg {
+  color: var(--hotel-primary);
+  flex-shrink: 0;
+}
+
+.ClientesPage__table-empty {
+  text-align: center;
+  padding: 3rem 1rem !important;
+  color: var(--hotel-text-secondary);
+  font-style: italic;
+}
+
+.ClientesPage__table-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.action-btn--info {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.action-btn--info:hover {
+  background: rgba(6, 182, 212, 0.2);
+}
+
+.action-btn--edit {
+  color: var(--hotel-primary);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.action-btn--edit:hover {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+.action-btn--delete {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.action-btn--delete:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .ClientesPage__filters-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filter-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .ClientesPage {
+    padding: 1rem;
+  }
+
+  .ClientesPage__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ClientesPage__header-title h1 {
+    font-size: 1.5rem;
+  }
+
+  .ClientesPage__filters-row {
+    grid-template-columns: 1fr;
+  }
+
+  .ClientesPage__table {
+    font-size: 0.8125rem;
+  }
+
+  .ClientesPage__table th,
+  .ClientesPage__table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .ClientesPage__table th:nth-child(4),
+  .ClientesPage__table td:nth-child(4),
+  .ClientesPage__table th:nth-child(6),
+  .ClientesPage__table td:nth-child(6) {
+    display: none;
+  }
+}

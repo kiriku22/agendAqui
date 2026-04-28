@@ -1,0 +1,313 @@
+/* ============================================================================
+   ALERTAS DE RESERVAS — Panel de tarjetas resumen
+   ============================================================================ */
+
+.alertas-reservas {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.625rem;
+  margin-bottom: 0.75rem;
+}
+
+.alertas-reservas--loading {
+  opacity: 0.6;
+}
+
+/* ============================================================================
+   TARJETA DE ALERTA
+   ============================================================================ */
+
+.alerta-card {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--hotel-border);
+  background: var(--hotel-card-background);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  font-family: inherit;
+}
+
+.alerta-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.alerta-card--active {
+  border-width: 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+/* ============================================================================
+   ICONO
+   ============================================================================ */
+
+.alerta-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ============================================================================
+   INFO (valor + label)
+   ============================================================================ */
+
+.alerta-card__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.alerta-card__valor {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--hotel-text);
+}
+
+.alerta-card__label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--hotel-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================================
+   DOT indicador (cuando hay valores > 0)
+   ============================================================================ */
+
+.alerta-card__dot {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+/* ============================================================================
+   VARIANTES DE COLOR
+   ============================================================================ */
+
+/* Azul - Llegadas */
+.alerta-card--blue {
+  border-color: rgba(37, 99, 235, 0.2);
+}
+.alerta-card--blue .alerta-card__icon {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+.alerta-card--blue .alerta-card__dot {
+  color: #2563eb;
+}
+.alerta-card--blue.alerta-card--active {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.04);
+}
+
+/* Verde - En Curso */
+.alerta-card--green {
+  border-color: rgba(5, 150, 105, 0.2);
+}
+.alerta-card--green .alerta-card__icon {
+  background: rgba(5, 150, 105, 0.1);
+  color: #059669;
+}
+.alerta-card--green .alerta-card__dot {
+  color: #059669;
+}
+.alerta-card--green.alerta-card--active {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.04);
+}
+
+/* Rojo - Salidas */
+.alerta-card--red {
+  border-color: rgba(220, 38, 38, 0.2);
+}
+.alerta-card--red .alerta-card__icon {
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+}
+.alerta-card--red .alerta-card__dot {
+  color: #dc2626;
+}
+.alerta-card--red.alerta-card--active {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.04);
+}
+
+/* Naranja - Late Check-out */
+.alerta-card--orange {
+  border-color: rgba(234, 88, 12, 0.2);
+}
+.alerta-card--orange .alerta-card__icon {
+  background: rgba(234, 88, 12, 0.1);
+  color: #ea580c;
+}
+.alerta-card--orange .alerta-card__dot {
+  color: #ea580c;
+}
+.alerta-card--orange.alerta-card--active {
+  border-color: #ea580c;
+  background: rgba(234, 88, 12, 0.04);
+}
+
+/* Amarillo - Pendientes */
+.alerta-card--yellow {
+  border-color: rgba(202, 138, 4, 0.2);
+}
+.alerta-card--yellow .alerta-card__icon {
+  background: rgba(202, 138, 4, 0.1);
+  color: #ca8a04;
+}
+.alerta-card--yellow .alerta-card__dot {
+  color: #ca8a04;
+}
+.alerta-card--yellow.alerta-card--active {
+  border-color: #ca8a04;
+  background: rgba(202, 138, 4, 0.04);
+}
+
+/* ============================================================================
+   ANIMACIÓN PULSE (Late Check-out)
+   ============================================================================ */
+
+.alerta-card--pulse {
+  animation: alertaPulse 2s ease-in-out infinite;
+}
+
+@keyframes alertaPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(234, 88, 12, 0);
+  }
+}
+
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+
+[data-theme="dark"] .alerta-card {
+  background: var(--hotel-card-background);
+}
+
+[data-theme="dark"] .alerta-card--blue .alerta-card__icon {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+[data-theme="dark"] .alerta-card--blue.alerta-card--active {
+  border-color: #60a5fa;
+  background: rgba(59, 130, 246, 0.08);
+}
+
+[data-theme="dark"] .alerta-card--green .alerta-card__icon {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+[data-theme="dark"] .alerta-card--green.alerta-card--active {
+  border-color: #34d399;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+[data-theme="dark"] .alerta-card--red .alerta-card__icon {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+[data-theme="dark"] .alerta-card--red.alerta-card--active {
+  border-color: #f87171;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+[data-theme="dark"] .alerta-card--orange .alerta-card__icon {
+  background: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+}
+[data-theme="dark"] .alerta-card--orange.alerta-card--active {
+  border-color: #fb923c;
+  background: rgba(251, 146, 60, 0.08);
+}
+
+[data-theme="dark"] .alerta-card--yellow .alerta-card__icon {
+  background: rgba(250, 204, 21, 0.15);
+  color: #fbbf24;
+}
+[data-theme="dark"] .alerta-card--yellow.alerta-card--active {
+  border-color: #fbbf24;
+  background: rgba(250, 204, 21, 0.08);
+}
+
+[data-theme="dark"] .alerta-card--pulse {
+  animation: alertaPulseDark 2s ease-in-out infinite;
+}
+
+@keyframes alertaPulseDark {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(251, 146, 60, 0);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .alertas-reservas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .alertas-reservas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .alerta-card {
+    padding: 0.5rem 0.625rem;
+    gap: 0.5rem;
+  }
+
+  .alerta-card__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .alerta-card__icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .alerta-card__valor {
+    font-size: 1.1rem;
+  }
+
+  .alerta-card__label {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .alertas-reservas {
+    grid-template-columns: 1fr 1fr;
+  }
+}

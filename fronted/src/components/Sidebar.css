@@ -1,0 +1,606 @@
+/* ============================================================================
+   SIDEBAR LATERAL - FACTUFY HOTEL
+   ============================================================================ */
+
+/* --- Variables locales --- */
+.sidebar {
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 68px;
+  --sidebar-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Sidebar Base --- */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--hotel-card-background);
+  border-right: 1px solid var(--hotel-border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: width var(--sidebar-transition);
+  overflow: hidden;
+}
+
+.sidebar--collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+/* --- Header: Logo + Toggle --- */
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--hotel-border);
+  min-height: 60px;
+  flex-shrink: 0;
+}
+
+.sidebar--collapsed .sidebar__header {
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+}
+
+.sidebar__logo-section {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.sidebar__logo {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+}
+
+.sidebar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.sidebar__toggle:hover {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-primary);
+}
+
+/* --- Navegación --- */
+.sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.5rem 0;
+}
+
+.sidebar__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__menu-item {
+  position: relative;
+  margin-bottom: 1px;
+}
+
+/* --- Link de Navegación --- */
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  margin: 0 0.5rem;
+  color: var(--hotel-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s;
+  position: relative;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: calc(100% - 1rem);
+  text-align: left;
+}
+
+.sidebar__link:hover {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-primary);
+}
+
+.sidebar__link--active {
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.1) 0%, rgba(59, 130, 246, 0.08) 100%);
+  color: var(--hotel-primary);
+  font-weight: 600;
+}
+
+.sidebar__link--active::before {
+  content: '';
+  position: absolute;
+  left: -0.5rem;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  background: var(--hotel-primary);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Colapsado: centrar icono */
+.sidebar--collapsed .sidebar__link {
+  justify-content: center;
+  padding: 0.75rem;
+  margin: 0 0.375rem;
+  width: calc(100% - 0.75rem);
+}
+
+.sidebar__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Badge Stock Bajo --- */
+.sidebar__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 10px;
+  animation: sidebar-pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.sidebar--collapsed .sidebar__badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 16px;
+  height: 16px;
+  font-size: 0.6rem;
+  padding: 0 4px;
+}
+
+@keyframes sidebar-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* --- Chevron submenu --- */
+.sidebar__chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  color: var(--hotel-text-light);
+}
+
+.sidebar__chevron--open {
+  transform: rotate(180deg);
+}
+
+/* --- Submenu (POS) --- */
+.sidebar__submenu {
+  list-style: none;
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin: 0;
+}
+
+.sidebar__submenu--popup {
+  position: absolute;
+  left: calc(var(--sidebar-collapsed-width) - 0.5rem);
+  top: 0;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  min-width: 180px;
+  z-index: 200;
+}
+
+.sidebar__submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.875rem;
+  color: var(--hotel-text-secondary);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s;
+  margin: 0 0.25rem;
+}
+
+.sidebar__submenu-link:hover {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-primary);
+}
+
+.sidebar__submenu-link--active {
+  color: var(--hotel-primary);
+  font-weight: 600;
+  background: rgba(30, 64, 175, 0.06);
+}
+
+/* --- Tooltips en modo colapsado --- */
+.sidebar--collapsed .sidebar__link[data-tooltip]:hover::after,
+.sidebar--collapsed .sidebar__theme-toggle[data-tooltip]:hover::after,
+.sidebar--collapsed .sidebar__user-button[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--hotel-text);
+  color: var(--hotel-card-background);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 300;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar--collapsed .sidebar__link[data-tooltip]:hover::before,
+.sidebar--collapsed .sidebar__theme-toggle[data-tooltip]:hover::before,
+.sidebar--collapsed .sidebar__user-button[data-tooltip]:hover::before {
+  content: '';
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-right-color: var(--hotel-text);
+  z-index: 300;
+  pointer-events: none;
+}
+
+/* --- Footer: Tema + Usuario --- */
+.sidebar__footer {
+  border-top: 1px solid var(--hotel-border);
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Toggle de tema */
+.sidebar__theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  border: none;
+  background: transparent;
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.sidebar__theme-toggle:hover {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-primary);
+}
+
+.sidebar--collapsed .sidebar__theme-toggle {
+  justify-content: center;
+  padding: 0.625rem;
+}
+
+/* --- Usuario --- */
+.sidebar__user {
+  position: relative;
+  margin-top: 0.25rem;
+}
+
+.sidebar__user-button {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+  color: var(--hotel-text);
+  position: relative;
+}
+
+.sidebar__user-button:hover {
+  background: var(--hotel-surface-light);
+}
+
+.sidebar--collapsed .sidebar__user-button {
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.sidebar__user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--hotel-primary), var(--hotel-primary-light));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sidebar__user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.sidebar__user-name {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.sidebar__user-role {
+  font-size: 0.6875rem;
+  color: var(--hotel-text-light);
+  text-transform: capitalize;
+}
+
+/* --- User Menu Popup --- */
+.sidebar__user-menu {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 8px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.375rem 0;
+  z-index: 200;
+  animation: sidebar-slide-up 0.15s ease-out;
+}
+
+.sidebar__user-menu--popup {
+  left: calc(var(--sidebar-collapsed-width) - 0.5rem);
+  bottom: 0;
+  right: auto;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes sidebar-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sidebar__user-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: none;
+  background: none;
+  color: var(--hotel-text);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  text-align: left;
+}
+
+.sidebar__user-menu-item:hover {
+  background: var(--hotel-surface-light);
+}
+
+.sidebar__user-menu-item--logout {
+  color: #ef4444;
+}
+
+.sidebar__user-menu-item--logout:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.sidebar__user-menu-divider {
+  height: 1px;
+  background: var(--hotel-border);
+  margin: 0.25rem 0;
+}
+
+/* --- Scrollbar personalizado --- */
+.sidebar__nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar__nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar__nav::-webkit-scrollbar-thumb {
+  background: var(--hotel-border-dark);
+  border-radius: 2px;
+}
+
+.sidebar__nav::-webkit-scrollbar-thumb:hover {
+  background: var(--hotel-text-light);
+}
+
+/* --- Overlay Mobile --- */
+.sidebar__overlay {
+  display: none;
+}
+
+/* --- Botón hamburguesa mobile --- */
+.sidebar__mobile-toggle {
+  display: none;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    --sidebar-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    --sidebar-width: 260px;
+    transform: translateX(-100%);
+    transition: transform var(--sidebar-transition);
+    box-shadow: none;
+    z-index: 300;
+  }
+
+  .sidebar--mobile-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .sidebar--collapsed {
+    width: var(--sidebar-width);
+  }
+
+  .sidebar__overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 250;
+    animation: sidebar-fade-in 0.2s ease-out;
+  }
+
+  @keyframes sidebar-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .sidebar__mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 90;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--hotel-border);
+    background: var(--hotel-card-background);
+    color: var(--hotel-text);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .sidebar__toggle {
+    display: none;
+  }
+
+  /* En mobile no colapsar, siempre expandido */
+  .sidebar--collapsed .sidebar__link {
+    justify-content: flex-start;
+    padding: 0.625rem 0.875rem;
+    margin: 0 0.5rem;
+    width: calc(100% - 1rem);
+  }
+
+  .sidebar--collapsed .sidebar__theme-toggle {
+    justify-content: flex-start;
+  }
+
+  .sidebar--collapsed .sidebar__user-button {
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================================================
+   DARK MODE
+   ============================================================================ */
+
+[data-theme="dark"] .sidebar {
+  background: var(--hotel-card-background);
+  border-right-color: var(--hotel-border);
+}
+
+[data-theme="dark"] .sidebar__header {
+  border-bottom-color: var(--hotel-border);
+}
+
+[data-theme="dark"] .sidebar__footer {
+  border-top-color: var(--hotel-border);
+}
+
+[data-theme="dark"] .sidebar__submenu--popup,
+[data-theme="dark"] .sidebar__user-menu {
+  background: var(--hotel-card-background);
+  border-color: var(--hotel-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .sidebar__mobile-toggle {
+  background: var(--hotel-card-background);
+  border-color: var(--hotel-border);
+  color: var(--hotel-text);
+}
+
+[data-theme="dark"] .sidebar__overlay {
+  background: rgba(0, 0, 0, 0.6);
+}

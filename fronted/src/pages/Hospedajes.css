@@ -1,0 +1,523 @@
+.hospedajes-page {
+  padding: 0.75rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.page-title {
+  display: none;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--hotel-text-secondary);
+  font-weight: 500;
+}
+
+/* Filtros */
+.hospedajes-filtros {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.filtro-busqueda {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.filtro-busqueda:focus-within {
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.filtro-busqueda svg {
+  color: var(--hotel-text-secondary);
+  flex-shrink: 0;
+}
+
+.filtro-busqueda input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  color: var(--hotel-text);
+  background: transparent;
+}
+
+.filtro-busqueda input::placeholder {
+  color: var(--hotel-text-light);
+}
+
+.filtro-estado {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.filtro-estado svg {
+  color: var(--hotel-text-secondary);
+}
+
+.filtro-estado select {
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--hotel-text);
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Contador */
+.hospedajes-contador {
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+}
+
+/* Grid de Hospedajes */
+.hospedajes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Card de Hospedaje */
+.hospedaje-card {
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 0.5rem;
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.hospedaje-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--hotel-primary);
+}
+
+/* Header de Card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.625rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.card-codigo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--hotel-primary);
+}
+
+.card-codigo svg {
+  color: var(--hotel-primary);
+}
+
+.card-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.card-estado {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* TRA Status Badges */
+.badge-tra {
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: default;
+}
+
+.badge-tra-enviado {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.badge-tra-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+.badge-tra-no_configurado {
+  background: #f3f4f6;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+.badge-tra-pendiente {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #f59e0b;
+}
+
+.badge-activo {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.badge-finalizado {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-text);
+  border: 1px solid var(--hotel-border-dark);
+}
+
+.badge-cancelado {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+}
+
+/* Info de Habitación */
+.card-habitacion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #ede9fe 0%, #dbeafe 100%);
+  border-radius: 0.5rem;
+  border: 1px solid #60a5fa;
+}
+
+.habitacion-numero {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6b21a8;
+}
+
+.habitacion-tipo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  text-transform: capitalize;
+}
+
+/* Info de Huésped */
+.card-huesped {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.huesped-nombre {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+.huesped-documento {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  text-transform: uppercase;
+}
+
+/* Fechas */
+.card-fechas {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  background: var(--hotel-surface-light);
+  border-radius: 0.375rem;
+}
+
+.fecha-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.fecha-label {
+  font-weight: 500;
+  color: var(--hotel-text-secondary);
+}
+
+.fecha-valor {
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+.fecha-noches {
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--hotel-card-background);
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--hotel-primary);
+  border: 1px solid var(--hotel-border);
+}
+
+/* Precio */
+.card-precio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #86efac;
+  border-radius: 0.375rem;
+}
+
+.precio-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.precio-valor {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+/* Ocupantes */
+.card-ocupantes {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+}
+
+.card-ocupantes span {
+  padding: 0.25rem 0.5rem;
+  background: var(--hotel-surface-light);
+  border-radius: 0.25rem;
+}
+
+/* Reserva */
+.card-reserva {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 0.5rem;
+  background: #dbeafe;
+  border: 1px solid #3b82f6;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+/* Acciones */
+.card-acciones {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--hotel-border);
+}
+
+.card-acciones button {
+  flex: 1;
+}
+
+/* Estados */
+.hospedajes-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  font-size: 1.125rem;
+  color: var(--hotel-text-secondary);
+}
+
+.hospedajes-error {
+  padding: 1.5rem;
+  background: #fee2e2;
+  border: 1px solid #ef4444;
+  border-radius: 0.5rem;
+  color: #991b1b;
+  font-weight: 600;
+  text-align: center;
+}
+
+.hospedajes-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+  background: var(--hotel-surface-light);
+  border: 2px dashed var(--hotel-border-dark);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.hospedajes-empty svg {
+  color: var(--hotel-text-light);
+}
+
+.hospedajes-empty p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--hotel-text-secondary);
+  font-weight: 600;
+}
+
+/* ============================================================================
+   DARK MODE OVERRIDES
+   ============================================================================ */
+
+[data-theme="dark"] .card-habitacion {
+  background: var(--hotel-surface-light);
+  border: 1px solid var(--hotel-border-dark);
+}
+
+[data-theme="dark"] .habitacion-numero {
+  color: var(--hotel-text);
+}
+
+[data-theme="dark"] .habitacion-tipo {
+  color: var(--hotel-text-secondary);
+}
+
+[data-theme="dark"] .card-precio {
+  background: var(--hotel-surface-light);
+  border: 1px solid var(--color-success);
+}
+
+[data-theme="dark"] .precio-label {
+  color: var(--hotel-text-secondary);
+}
+
+[data-theme="dark"] .precio-valor {
+  color: #4ade80;
+}
+
+[data-theme="dark"] .badge-activo {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: #10b981;
+}
+
+[data-theme="dark"] .badge-cancelado {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: #ef4444;
+}
+
+[data-theme="dark"] .badge-tra-enviado {
+  background: rgba(16, 185, 129, 0.15);
+  color: #6ee7b7;
+  border-color: #10b981;
+}
+
+[data-theme="dark"] .badge-tra-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: #ef4444;
+}
+
+[data-theme="dark"] .badge-tra-no_configurado {
+  background: rgba(107, 114, 128, 0.15);
+  color: #9ca3af;
+  border-color: #6b7280;
+}
+
+[data-theme="dark"] .badge-tra-pendiente {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fcd34d;
+  border-color: #f59e0b;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .hospedajes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .hospedajes-page {
+    padding: 1rem;
+  }
+
+  .hospedajes-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hospedajes-header button {
+    width: 100%;
+  }
+
+  .header-titulo h1 {
+    font-size: 1.5rem;
+  }
+
+  .hospedajes-filtros {
+    flex-direction: column;
+  }
+
+  .filtro-busqueda {
+    min-width: 100%;
+  }
+
+  .filtro-estado {
+    width: 100%;
+  }
+
+  .hospedajes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-acciones {
+    flex-direction: column;
+  }
+
+  .card-acciones button {
+    width: 100%;
+  }
+}

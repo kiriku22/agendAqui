@@ -1,0 +1,130 @@
+.notification-container {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  pointer-events: none;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--hotel-card-background);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  min-width: 300px;
+  max-width: 400px;
+  animation: slideIn 0.3s ease-out;
+  pointer-events: all;
+  border-left: 4px solid;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.notification__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.notification__message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--hotel-text);
+}
+
+.notification__close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.notification__close:hover {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-text);
+}
+
+/* Success - Verde */
+.notification--success {
+  border-left-color: #10b981;
+}
+
+.notification--success .notification__icon {
+  background: #10b981;
+}
+
+/* Error - Rojo */
+.notification--error {
+  border-left-color: #ef4444;
+}
+
+.notification--error .notification__icon {
+  background: #ef4444;
+}
+
+/* Warning - Amarillo */
+.notification--warning {
+  border-left-color: #f59e0b;
+}
+
+.notification--warning .notification__icon {
+  background: #f59e0b;
+}
+
+/* Info - Violeta (tema hotel) */
+.notification--info {
+  border-left-color: #8b5cf6;
+}
+
+.notification--info .notification__icon {
+  background: #8b5cf6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .notification-container {
+    top: 60px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+
+  .notification {
+    min-width: auto;
+    max-width: none;
+  }
+}

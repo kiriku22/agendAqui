@@ -1,0 +1,1022 @@
+/* =====================================================
+   POS - PUNTO DE VENTA
+   ===================================================== */
+
+.pos-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--hotel-background);
+}
+
+/* Header */
+.pos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #c4b5fd 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.2);
+}
+
+.pos-header-left h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.turno-info {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+.tipo-cliente-select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tipo-cliente-select:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.tipo-cliente-select option {
+  background: #8b5cf6;
+  color: white;
+}
+
+/* Main Content */
+.pos-content {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Left Side - Products */
+.pos-left {
+  display: flex;
+  flex-direction: column;
+  background: var(--hotel-card-background);
+  border-right: 1px solid var(--hotel-border);
+  overflow: hidden;
+}
+
+.search-bar {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--hotel-border);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--hotel-border);
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  background: var(--hotel-surface-light);
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.tab.active {
+  background: #8b5cf6;
+  color: white;
+  border-color: #8b5cf6;
+}
+
+.product-grid {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  align-content: start;
+}
+
+.empty-products {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  color: var(--hotel-text-light);
+  text-align: center;
+}
+
+/* Right Side - Cart */
+.pos-right {
+  display: flex;
+  flex-direction: column;
+  background: var(--hotel-surface-light);
+  overflow: hidden;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.cart-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--hotel-text);
+}
+
+.btn-limpiar {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #ef4444;
+  background: var(--hotel-card-background);
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-limpiar:hover {
+  background: #fef2f2;
+}
+
+.cart-items {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--hotel-text-light);
+  text-align: center;
+}
+
+.cart-empty p {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cart-empty small {
+  font-size: 0.875rem;
+}
+
+.cart-item {
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.cart-item-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.cart-item-name {
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.cart-item-precio {
+  color: var(--hotel-text-secondary);
+}
+
+.cart-item-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cart-item-controls button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cart-item-controls button:hover {
+  background: var(--hotel-surface-light);
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+}
+
+.cart-item-controls input {
+  width: 60px;
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+}
+
+.btn-eliminar {
+  margin-left: auto;
+  color: #ef4444;
+}
+
+.btn-eliminar:hover {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+
+.cart-item-total {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--hotel-border);
+  text-align: right;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #8b5cf6;
+}
+
+/* Descuentos */
+.cart-descuentos {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--hotel-border);
+  background: var(--hotel-card-background);
+}
+
+.cart-descuentos h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--hotel-text);
+}
+
+.text-muted {
+  color: var(--hotel-text-light);
+  font-size: 0.875rem;
+}
+
+/* Propina */
+.cart-propina {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--hotel-border);
+  background: var(--hotel-card-background);
+}
+
+.cart-propina label {
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.cart-propina input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+}
+
+/* Totales */
+.cart-totales {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--hotel-border);
+  background: var(--hotel-card-background);
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  color: var(--hotel-text-secondary);
+}
+
+.total-row.descuento {
+  color: #10b981;
+}
+
+.total-row.total-final {
+  padding-top: 1rem;
+  border-top: 2px solid var(--hotel-border);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+.total-final span:last-child {
+  color: #8b5cf6;
+}
+
+/* Actions */
+.cart-actions {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--hotel-border);
+  background: var(--hotel-card-background);
+}
+
+.btn-pagar {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.btn-pagar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+}
+
+.btn-pagar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sin Turno */
+.pos-sin-turno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.pos-sin-turno h2 {
+  font-size: 2rem;
+  color: #92400e;
+  margin-bottom: 1rem;
+}
+
+.pos-sin-turno p {
+  font-size: 1.125rem;
+  color: #78350f;
+  margin-bottom: 2rem;
+}
+
+.pos-sin-turno button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: #f59e0b;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pos-sin-turno button:hover {
+  background: #d97706;
+  transform: translateY(-2px);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--hotel-card-background);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Loading/Error States */
+.pos-loading,
+.pos-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 1.25rem;
+  color: var(--hotel-text-secondary);
+}
+
+.pos-error {
+  color: #ef4444;
+}
+
+/* =====================================================
+   CLIENTE SELECTOR
+   ===================================================== */
+
+.pos-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cliente-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cliente-seleccionado {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.btn-clear {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.btn-clear:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-seleccionar-cliente {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-seleccionar-cliente:hover {
+  background: var(--hotel-card-background);
+  color: #8b5cf6;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content.modal-large {
+  max-width: 700px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--hotel-text);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-text);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.search-bar-modal {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-bar-modal .search-input {
+  flex: 1;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: #7c3aed;
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background: var(--hotel-surface-light);
+  color: var(--hotel-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--hotel-border);
+}
+
+/* Clientes List */
+.clientes-list, .huespedes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.cliente-item, .huesped-item {
+  padding: 1rem;
+  border: 2px solid var(--hotel-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--hotel-card-background);
+}
+
+.cliente-item:hover, .huesped-item:hover {
+  border-color: #8b5cf6;
+  background: #f5f3ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.cliente-info-main, .huesped-info-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cliente-info-main strong, .huesped-info-main strong {
+  font-size: 1rem;
+  color: var(--hotel-text);
+}
+
+.cliente-documento {
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+}
+
+.cliente-info-secondary, .huesped-info-secondary {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+}
+
+.habitacion-badge {
+  padding: 0.25rem 0.75rem;
+  background: #8b5cf6;
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.hospedaje-codigo {
+  font-family: monospace;
+  background: var(--hotel-surface-light);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  color: var(--hotel-text);
+}
+
+/* Form Cliente */
+.form-cliente {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-cliente h3 {
+  margin: 0 0 1rem 0;
+  color: var(--hotel-text);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.form-control {
+  padding: 0.75rem;
+  border: 2px solid var(--hotel-border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: border-color 0.2s;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pos-content {
+    grid-template-columns: 1fr;
+  }
+
+  .pos-right {
+    display: none; /* TODO: Implement mobile drawer */
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .search-bar-modal {
+    flex-direction: column;
+  }
+
+  .pos-header-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+}
+
+/* =====================================================
+   PAYMENT MODAL
+   ===================================================== */
+
+.payment-modal {
+  max-width: 800px;
+}
+
+.payment-summary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.paid-amount,
+.pending-amount {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.paid-amount.success,
+.pending-amount.success {
+  color: #10b981;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.add-payment-section {
+  background: var(--hotel-surface-light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.add-payment-section h3 {
+  margin: 0 0 1rem 0;
+  color: var(--hotel-text);
+  font-size: 1rem;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payments-list {
+  margin-bottom: 1.5rem;
+}
+
+.payments-list h3 {
+  margin: 0 0 1rem 0;
+  color: var(--hotel-text);
+  font-size: 1rem;
+}
+
+.payments-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--hotel-surface-light);
+  border-radius: 8px;
+  border: 2px solid var(--hotel-border);
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.payment-info strong {
+  color: var(--hotel-text);
+  font-size: 1rem;
+}
+
+.payment-reference {
+  font-size: 0.75rem;
+  color: var(--hotel-text-secondary);
+  font-family: monospace;
+  background: var(--hotel-card-background);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+}
+
+.payment-amount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #8b5cf6;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-remove:hover {
+  background: #fee2e2;
+}
+
+.change-calculator {
+  background: #ecfdf5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #10b981;
+  margin-bottom: 1.5rem;
+}
+
+.change-calculator h3 {
+  margin: 0 0 1rem 0;
+  color: #065f46;
+  font-size: 1rem;
+}
+
+.change-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--hotel-card-background);
+  border-radius: 8px;
+  border: 2px solid #10b981;
+}
+
+.change-display span:first-child {
+  color: #065f46;
+  font-weight: 500;
+}
+
+.change-amount {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #10b981;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 2px solid var(--hotel-border);
+}
+
+.btn-success {
+  padding: 0.75rem 1.5rem;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #059669;
+}
+
+.btn-success:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Responsive payment modal */
+@media (max-width: 768px) {
+  .payment-summary {
+    padding: 1rem;
+  }
+
+  .total-amount {
+    font-size: 1.25rem;
+  }
+
+  .paid-amount,
+  .pending-amount {
+    font-size: 1rem;
+  }
+
+  .add-payment-section {
+    padding: 1rem;
+  }
+
+  .change-amount {
+    font-size: 1.5rem;
+  }
+
+  .payment-actions {
+    flex-direction: column;
+  }
+
+  .payment-actions button {
+    width: 100%;
+  }
+}

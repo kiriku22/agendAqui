@@ -1,0 +1,44 @@
+.success-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+}
+
+.success-modal__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: successBounce 0.6s ease-out;
+}
+
+@keyframes successBounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-modal__message {
+  text-align: center;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: #374151;
+  max-width: 400px;
+}
+
+.success-modal__actions {
+  width: 100%;
+  margin-top: 0.5rem;
+}

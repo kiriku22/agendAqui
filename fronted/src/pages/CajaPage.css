@@ -1,0 +1,706 @@
+/* =====================================================
+   CAJA PAGE - Gestión de Turnos de Caja
+   ===================================================== */
+
+.caja-page {
+  min-height: 100vh;
+  background-color: var(--hotel-background);
+  padding: 2rem;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+.caja-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-left h1 {
+  font-size: 2rem;
+  color: var(--hotel-text);
+  margin: 0 0 0.25rem 0;
+}
+
+.header-subtitle {
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* =====================================================
+   BADGES DE ESTADO
+   ===================================================== */
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.badge-open {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .badge-open {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border-color: #10b981;
+}
+
+.badge-time,
+.badge-user,
+.badge-date {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-text);
+  border: 1px solid var(--hotel-border);
+}
+
+.badge svg {
+  font-size: 0.875rem;
+}
+
+/* =====================================================
+   GRID DE METRICAS PRINCIPALES
+   ===================================================== */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s;
+  border: 1px solid var(--hotel-border);
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+}
+
+.metric-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.metric-green .metric-icon {
+  background: #10b981;
+  color: white;
+}
+
+.metric-green-light .metric-icon {
+  background: #22c55e;
+  color: white;
+}
+
+.metric-yellow .metric-icon {
+  background: #eab308;
+  color: white;
+}
+
+.metric-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--hotel-text-light);
+}
+
+/* =====================================================
+   GRID DE METODOS DE PAGO
+   ===================================================== */
+.metodos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metodo-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--hotel-border);
+}
+
+.metodo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.metodo-efectivo .metodo-icon {
+  background: #10b981;
+  color: white;
+}
+
+.metodo-tarjeta .metodo-icon {
+  background: #eab308;
+  color: white;
+}
+
+.metodo-transferencia .metodo-icon {
+  background: #3b82f6;
+  color: white;
+}
+
+.metodo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.metodo-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metodo-value {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+}
+
+/* =====================================================
+   SIN TURNO CARD
+   ===================================================== */
+.sin-turno-card {
+  background: var(--hotel-card-background);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 4rem auto;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--hotel-border);
+}
+
+.sin-turno-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.sin-turno-card h2 {
+  font-size: 1.5rem;
+  color: var(--hotel-text);
+  margin: 0 0 0.75rem 0;
+}
+
+.sin-turno-card p {
+  font-size: 1rem;
+  color: var(--hotel-text-secondary);
+  margin: 0 0 2rem 0;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-lg {
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-dark {
+  background: #374151;
+  color: white;
+}
+
+.btn-dark:hover:not(:disabled) {
+  background: #1f2937;
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-secondary {
+  background: var(--hotel-surface-light);
+  color: var(--hotel-text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--hotel-border);
+}
+
+/* =====================================================
+   MODAL
+   ===================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-large {
+  max-width: 700px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--hotel-border);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--hotel-text);
+}
+
+.btn-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--hotel-surface-light);
+  border-radius: 6px;
+  font-size: 1.5rem;
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-close:hover {
+  background: var(--hotel-border);
+  color: var(--hotel-text);
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* =====================================================
+   FORM
+   ===================================================== */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.form-group .required {
+  color: #ef4444;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+}
+
+.form-control,
+.form-control-sm {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  transition: border-color 0.2s;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+}
+
+.form-control:focus,
+.form-control-sm:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
+.form-control-sm {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+textarea.form-control {
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* =====================================================
+   ARQUEO
+   ===================================================== */
+.arqueo-section h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--hotel-text);
+}
+
+.arqueo-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.arqueo-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--hotel-surface-light);
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+}
+
+.arqueo-item label {
+  font-weight: 600;
+  color: var(--hotel-text);
+}
+
+.arqueo-item .subtotal {
+  font-size: 0.875rem;
+  color: #8b5cf6;
+  font-weight: 600;
+  text-align: right;
+}
+
+.arqueo-totales {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--hotel-surface-light);
+  border-radius: 8px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  font-size: 1.125rem;
+}
+
+.total-row.diferencia {
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  border-top: 2px solid var(--hotel-border);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.total-row.diferencia.exacta {
+  color: #10b981;
+}
+
+.total-row.diferencia.positiva {
+  color: #3b82f6;
+}
+
+.total-row.diferencia.negativa {
+  color: #ef4444;
+}
+
+.monto-real {
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+/* =====================================================
+   ALERTS
+   ===================================================== */
+.alert {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+
+.alert-info {
+  background: #dbeafe;
+  color: #1e40af;
+  border-left: 4px solid #3b82f6;
+}
+
+[data-theme="dark"] .alert-info {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+}
+
+.alert-warning {
+  background: #fef3c7;
+  color: #92400e;
+  border-left: 4px solid #f59e0b;
+}
+
+[data-theme="dark"] .alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fcd34d;
+}
+
+/* =====================================================
+   UTILITIES
+   ===================================================== */
+.text-muted {
+  color: var(--hotel-text-light);
+  font-size: 0.875rem;
+}
+
+/* =====================================================
+   LOADING
+   ===================================================== */
+.caja-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 1.25rem;
+  color: var(--hotel-text-secondary);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+  .metrics-grid,
+  .metodos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .caja-page {
+    padding: 1rem;
+  }
+
+  .caja-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-actions {
+    justify-content: stretch;
+  }
+
+  .header-actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .metrics-grid,
+  .metodos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .badges-container {
+    flex-direction: column;
+  }
+
+  .badge {
+    justify-content: center;
+  }
+
+  .arqueo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-left h1 {
+    font-size: 1.5rem;
+  }
+
+  .metric-icon,
+  .metodo-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.125rem;
+  }
+
+  .metric-value {
+    font-size: 1.25rem;
+  }
+
+  .metodo-value {
+    font-size: 1.125rem;
+  }
+
+  .sin-turno-card {
+    padding: 2rem 1rem;
+  }
+
+  .sin-turno-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.5rem;
+  }
+}
+
+/* =====================================================
+   USER INFO DISPLAY - Seguridad de Caja
+   ===================================================== */
+.user-info-group {
+  margin-bottom: 1.5rem;
+}
+
+.user-info-display {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--hotel-surface-light);
+  border: 1px solid var(--hotel-border);
+  border-radius: 6px;
+  color: var(--hotel-text);
+  font-weight: 500;
+}
+
+.user-info-display svg {
+  color: #8b5cf6;
+  font-size: 1.125rem;
+}
+
+/* Password field focus state */
+input[type="password"].form-control:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}

@@ -1,0 +1,67 @@
+.select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-width: 200px;
+  flex: 1;
+}
+
+.select-group__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--hotel-text);
+}
+
+.select-group__required {
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+.select-group__select {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  border: 1px solid var(--hotel-border);
+  border-radius: 0.5rem;
+  background: var(--hotel-card-background);
+  color: var(--hotel-text);
+  transition: all 0.2s;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.select-group__select:focus {
+  outline: none;
+  border-color: var(--hotel-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.select-group__select:disabled {
+  background-color: var(--hotel-surface-light);
+  color: var(--hotel-text-light);
+  cursor: not-allowed;
+}
+
+.select-group__select--error {
+  border-color: #ef4444;
+}
+
+.select-group__select--error:focus {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+.select-group__error {
+  font-size: 0.8125rem;
+  color: #ef4444;
+}
+
+/* Dark mode: ajustar el icono del dropdown */
+[data-theme="dark"] .select-group__select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23a0a0a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}

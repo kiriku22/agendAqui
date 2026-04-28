@@ -1,0 +1,208 @@
+/* Página de Configuración - Diseño de cuadritos/cards */
+
+.configuracion-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.configuracion-header {
+  margin-bottom: 2rem;
+}
+
+.configuracion-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+  margin-bottom: 0.5rem;
+}
+
+.configuracion-subtitle {
+  font-size: 1rem;
+  color: var(--hotel-text-secondary);
+}
+
+/* Grid de cards */
+.config-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Config Card */
+.config-card {
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.config-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--hotel-primary, #1e40af);
+  transform: translateY(-4px);
+}
+
+.config-card__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.config-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.config-card__icon--primary {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+}
+
+.config-card__icon--success {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  color: white;
+}
+
+.config-card__icon--info {
+  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  color: white;
+}
+
+.config-card__icon--warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  color: white;
+}
+
+.config-card__icon--danger {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%);
+  color: white;
+}
+
+.config-card__icon--secondary {
+  background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
+  color: white;
+}
+
+.config-card__icon--purple {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+  color: white;
+}
+
+.config-card__icon--violet {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  color: white;
+}
+
+.config-card__icon--teal {
+  background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
+  color: white;
+}
+
+.config-card__icon--pink {
+  background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+  color: white;
+}
+
+.config-card__content {
+  flex: 1;
+}
+
+.config-card__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hotel-text);
+  margin-bottom: 0.5rem;
+}
+
+.config-card__description {
+  font-size: 0.875rem;
+  color: var(--hotel-text-secondary);
+  line-height: 1.5;
+}
+
+.config-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--hotel-border);
+}
+
+.config-card__action {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--hotel-primary, #1e40af);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.config-card__badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.config-card__badge--admin {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+
+.config-card__badge--all {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+/* Wide card para inventario */
+.config-card--wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .config-card--wide {
+    grid-column: span 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .configuracion-page {
+    padding: 1rem;
+  }
+
+  .configuracion-title {
+    font-size: 1.5rem;
+  }
+
+  .config-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .config-card {
+    padding: 1.25rem;
+  }
+
+  .config-card__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .config-card__title {
+    font-size: 1.125rem;
+  }
+}

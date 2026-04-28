@@ -1,0 +1,341 @@
+/* Modal Container */
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.Modal__content {
+  background: var(--hotel-card-background);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.Modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+}
+
+.Modal__header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+}
+
+.Modal__header-title h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.Modal__close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.Modal__close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Form */
+.Modal__form {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.Modal__section {
+  margin-bottom: 2rem;
+}
+
+.Modal__section:last-of-type {
+  margin-bottom: 0;
+}
+
+.Modal__section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.Modal__section-header svg {
+  color: var(--color-primary);
+}
+
+.Modal__section-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.Modal__form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Modal__form-row:last-child {
+  margin-bottom: 0;
+}
+
+.Modal__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.Modal__form-group--full {
+  grid-column: 1 / -1;
+}
+
+.Modal__form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Modal__form-group label svg {
+  color: var(--color-primary);
+}
+
+.Modal__form-group label .required {
+  color: #ef4444;
+}
+
+.Modal__form-group input,
+.Modal__form-group select,
+.Modal__form-group textarea {
+  padding: 0.625rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.Modal__form-group input:focus,
+.Modal__form-group select:focus,
+.Modal__form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.Modal__form-group input:disabled,
+.Modal__form-group select:disabled {
+  background-color: var(--color-background);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.Modal__form-group input.error,
+.Modal__form-group select.error {
+  border-color: #ef4444;
+}
+
+.Modal__form-group input.error:focus,
+.Modal__form-group select.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: -0.25rem;
+}
+
+/* Footer */
+.Modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+
+/* Campos DIAN - Estilos especiales */
+.input-disabled {
+  background-color: var(--hotel-surface-light);
+  color: var(--hotel-text-secondary);
+  cursor: not-allowed;
+}
+
+.input-small {
+  max-width: 80px;
+}
+
+.help-text {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--hotel-text-secondary);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+}
+
+/* Selector de municipios */
+.municipio-selector {
+  position: relative;
+}
+
+.municipio-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.municipio-input-wrapper input {
+  flex: 1;
+  padding-right: 35px;
+}
+
+.btn-clear-municipio {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--hotel-text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.btn-clear-municipio:hover {
+  color: #ef4444;
+}
+
+/* Dropdown de municipios */
+.municipios-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--hotel-card-background);
+  border: 1px solid var(--hotel-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  margin-top: 4px;
+}
+
+.municipio-item {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--hotel-card-background);
+  border: none;
+  border-bottom: 1px solid var(--hotel-border);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.municipio-item:hover {
+  background: var(--hotel-surface-light);
+}
+
+.municipio-item:last-child {
+  border-bottom: none;
+}
+
+.municipio-nombre {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--hotel-text);
+  margin-bottom: 4px;
+}
+
+.municipio-codigo {
+  font-size: 12px;
+  color: var(--hotel-text-secondary);
+}
+
+.loading-small,
+.no-results-small {
+  padding: 16px;
+  text-align: center;
+  color: var(--hotel-text-secondary);
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .Modal__content {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .Modal__form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .Modal__header-title h2 {
+    font-size: 1.25rem;
+  }
+}

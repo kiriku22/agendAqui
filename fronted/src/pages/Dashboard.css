@@ -1,0 +1,294 @@
+.dashboard-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.dashboard-header-section {
+  margin-bottom: 1rem;
+}
+
+.dashboard-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+  margin-bottom: 0.125rem;
+}
+
+.dashboard-subtitle {
+  font-size: 0.8125rem;
+  color: var(--hotel-text-secondary);
+}
+
+/* Statistics Grid - 3 columnas x 2 filas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: var(--hotel-card-background);
+  border-radius: 6px;
+  padding: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--hotel-border);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.stat-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--hotel-text-secondary);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hotel-text);
+  line-height: 1;
+}
+
+/* Stat Card Variants - Colores profesionales según estado */
+.stat-total .stat-icon {
+  background: #2d3748;
+  color: white;
+}
+
+.stat-success .stat-icon {
+  background: #10b981;
+  color: white;
+}
+
+.stat-danger .stat-icon {
+  background: #ef4444;
+  color: white;
+}
+
+.stat-warning .stat-icon {
+  background: #f59e0b;
+  color: white;
+}
+
+.stat-secondary .stat-icon {
+  background: #6b7280;
+  color: white;
+}
+
+.stat-info .stat-icon {
+  background: #3b82f6;
+  color: white;
+}
+
+/* Occupancy Section */
+.occupancy-section {
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--hotel-text);
+  margin-bottom: 0.625rem;
+}
+
+.occupancy-card {
+  background: var(--hotel-card-background);
+  border-radius: 6px;
+  padding: 0.875rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--hotel-border);
+}
+
+.occupancy-bar-container {
+  width: 100%;
+  height: 1.25rem;
+  background: var(--hotel-surface-light);
+  border-radius: 0.625rem;
+  overflow: hidden;
+  margin-bottom: 0.625rem;
+}
+
+.occupancy-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+  transition: width 0.5s ease-in-out;
+  border-radius: 0.625rem;
+}
+
+.occupancy-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.occupancy-percentage {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hotel-primary);
+}
+
+.occupancy-text {
+  font-size: 0.8125rem;
+  color: var(--hotel-text-secondary);
+}
+
+/* Quick Actions */
+.quick-actions {
+  margin-bottom: 0.5rem;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.action-card {
+  background: var(--hotel-card-background);
+  border-radius: 6px;
+  padding: 0.875rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--hotel-border);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--hotel-primary);
+}
+
+.action-icon {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  color: white;
+}
+
+.action-card h3 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--hotel-text);
+  margin-bottom: 0.25rem;
+}
+
+.action-card p {
+  font-size: 0.75rem;
+  color: var(--hotel-text-secondary);
+  margin: 0;
+}
+
+/* ===== Dark Mode Overrides ===== */
+[data-theme="dark"] .stat-card {
+  border: 1px solid var(--hotel-border);
+}
+
+[data-theme="dark"] .stat-total .stat-icon {
+  background: #3d4f6a;
+  color: var(--hotel-text);
+}
+
+[data-theme="dark"] .occupancy-card {
+  border: 1px solid var(--hotel-border);
+}
+
+[data-theme="dark"] .action-card {
+  border: 1px solid var(--hotel-border);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 0;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .actions-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .action-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-label {
+    font-size: 0.625rem;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .occupancy-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

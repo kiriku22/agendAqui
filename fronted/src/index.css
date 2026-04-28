@@ -1,0 +1,326 @@
+/* ============================================================================
+   FACTUFY HOTEL - ESTILOS GLOBALES
+   ============================================================================ */
+
+:root {
+  /* Colores Primarios del Sistema Factufy */
+  --color-primary: #2c3e50;
+  --color-primary-dark: #1a252f;
+  --color-secondary: #34495e;
+
+  /* Colores de Acento */
+  --color-accent: #3498db;
+  --color-info: #3498db;
+
+  /* Colores de Estado */
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-danger: #e74c3c;
+
+  /* Colores de Fondo */
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-surface-dark: #e9ecef;
+
+  /* Colores de Texto */
+  --color-text-primary: #2c3e50;
+  --color-text-secondary: #7f8c8d;
+  --color-text-light: #95a5a6;
+  --color-border: #dee2e6;
+
+  /* Colores Específicos de Interfaz Hotel */
+  --hotel-primary: #1e40af;
+  --hotel-primary-hover: #1e3a8a;
+  --hotel-primary-light: #3b82f6;
+
+  --hotel-secondary: #06b6d4;
+  --hotel-secondary-hover: #0891b2;
+  --hotel-secondary-light: #67e8f9;
+
+  --hotel-accent: #f59e0b;
+  --hotel-accent-hover: #d97706;
+  --hotel-accent-light: #fbbf24;
+
+  --hotel-background: #eff6ff;
+  --hotel-card-background: #ffffff;
+  --hotel-surface-light: #dbeafe;
+
+  --hotel-text: #1f2937;
+  --hotel-text-secondary: #6b7280;
+  --hotel-text-light: #9ca3af;
+
+  --hotel-border: #e5e7eb;
+  --hotel-border-dark: #d1d5db;
+
+  /* Estados de Habitación */
+  --room-disponible-bg: #d1fae5;
+  --room-disponible-border: #10b981;
+  --room-disponible-text: #047857;
+
+  --room-ocupada-bg: #fee2e2;
+  --room-ocupada-border: #ef4444;
+  --room-ocupada-text: #dc2626;
+
+  --room-limpieza-bg: #fef3c7;
+  --room-limpieza-border: #f59e0b;
+  --room-limpieza-text: #d97706;
+
+  --room-mantenimiento-bg: #e5e7eb;
+  --room-mantenimiento-border: #6b7280;
+  --room-mantenimiento-text: #374151;
+
+  --room-reservada-bg: #dbeafe;
+  --room-reservada-border: #3b82f6;
+  --room-reservada-text: #1e40af;
+
+  /* Tipografía */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-size-base: 13px;
+  --font-size-small: 11px;
+  --font-size-large: 14px;
+  --font-size-h1: 18px;
+  --font-size-h2: 14px;
+  --font-size-h3: 13px;
+
+  /* Espaciado */
+  --spacing-xs: 2px;
+  --spacing-sm: 5px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-xxl: 20px;
+
+  /* Bordes y Sombras */
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 14px;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Transiciones */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* Reset y Estilos Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--hotel-text);
+  background-color: var(--hotel-background);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--hotel-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--hotel-primary-hover);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Utilidades */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--hotel-surface-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hotel-primary-light);
+  border-radius: var(--border-radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hotel-primary);
+}
+
+/* ============================================================================
+   MODO OSCURO / DARK MODE
+   ============================================================================ */
+
+[data-theme="dark"] {
+  /* Colores Primarios del Sistema (oscuros) */
+  --color-primary: #3b82f6;
+  --color-primary-dark: #60a5fa;
+  --color-secondary: #64748b;
+
+  /* Colores de Acento */
+  --color-accent: #60a5fa;
+  --color-info: #60a5fa;
+
+  /* Colores de Estado (más brillantes para contraste) */
+  --color-success: #22c55e;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+
+  /* Colores de Fondo */
+  --color-background: #1a1a2e;
+  --color-surface: #16213e;
+  --color-surface-dark: #0f3460;
+
+  /* Colores de Texto */
+  --color-text-primary: #e5e5e5;
+  --color-text-secondary: #a0a0a0;
+  --color-text-light: #6b7280;
+  --color-border: #374151;
+
+  /* Colores Específicos de Interfaz Hotel (Dark) */
+  --hotel-primary: #3b82f6;
+  --hotel-primary-hover: #60a5fa;
+  --hotel-primary-light: #93c5fd;
+
+  --hotel-secondary: #22d3ee;
+  --hotel-secondary-hover: #67e8f9;
+  --hotel-secondary-light: #a5f3fc;
+
+  --hotel-accent: #fbbf24;
+  --hotel-accent-hover: #fcd34d;
+  --hotel-accent-light: #fde68a;
+
+  --hotel-background: #1a1a2e;
+  --hotel-card-background: #16213e;
+  --hotel-surface-light: #1e2d4a;
+  --hotel-surface-lighter: rgba(255, 255, 255, 0.10);
+
+  --hotel-text: #e5e5e5;
+  --hotel-text-secondary: #b0b8c4;
+  --hotel-text-light: #8891a0;
+
+  --hotel-border: #374151;
+  --hotel-border-dark: #4b5563;
+
+  /* Estados de Habitación (Dark Mode) */
+  --room-disponible-bg: #065f46;
+  --room-disponible-border: #10b981;
+  --room-disponible-text: #6ee7b7;
+
+  --room-ocupada-bg: #7f1d1d;
+  --room-ocupada-border: #ef4444;
+  --room-ocupada-text: #fca5a5;
+
+  --room-limpieza-bg: #78350f;
+  --room-limpieza-border: #f59e0b;
+  --room-limpieza-text: #fcd34d;
+
+  --room-mantenimiento-bg: #374151;
+  --room-mantenimiento-border: #6b7280;
+  --room-mantenimiento-text: #d1d5db;
+
+  --room-reservada-bg: #1e3a8a;
+  --room-reservada-border: #3b82f6;
+  --room-reservada-text: #93c5fd;
+
+  /* Sombras más pronunciadas para dark mode */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+}
+
+/* Transición suave al cambiar de tema */
+html,
+body,
+.header,
+.layout,
+.card,
+.modal,
+.modal__overlay,
+.modal__content,
+input,
+select,
+textarea,
+button,
+table,
+th,
+td {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
