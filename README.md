@@ -65,7 +65,7 @@ cd Factufy
 psql -U postgres
 
 # Crear la base de datos
-CREATE DATABASE factufy_hotel;
+CREATE DATABASE AgendaAqui_hotel;
 
 # Salir
 \q
@@ -74,7 +74,7 @@ CREATE DATABASE factufy_hotel;
 #### Ejecutar el schema:
 
 ```bash
-psql -U postgres -d factufy_hotel -f backend/database/schema_hotel.sql
+psql -U postgres -d AgendaAqui_hotel -f backend/database/schema_hotel.sql
 ```
 
 Esto creará:
@@ -105,7 +105,7 @@ NODE_ENV=development
 
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=factufy_hotel
+DB_NAME=AgendaAqui_hotel
 DB_USER=postgres
 DB_PASSWORD=root87  
 
@@ -130,7 +130,7 @@ El archivo `.env` debe contener:
 
 ```env
 VITE_API_URL=http://localhost:4003/graphql
-VITE_APP_NAME=Factufy Hotel
+VITE_APP_NAME=AgendaAqui Hotel
 ```
 
 ## 🎯 Uso
